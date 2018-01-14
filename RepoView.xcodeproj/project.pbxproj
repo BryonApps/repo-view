@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F3D8C7673FC4D3D1163DA9B /* Pods_RepoView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4797F8E507AE9148B7D4E302 /* Pods_RepoView.framework */; };
+		2252465E2009A15B004BAB3B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2252465C2009A15A004BAB3B /* Podfile */; };
+		2252465F2009A15B004BAB3B /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 2252465D2009A15A004BAB3B /* Podfile.lock */; };
+		225246682009A90B004BAB3B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225246672009A90B004BAB3B /* ViewModel.swift */; };
+		2252466E200BBA9D004BAB3B /* GitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252466D200BBA9D004BAB3B /* GitRepository.swift */; };
 		22F9961A20083F3E00D034CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9961920083F3E00D034CD /* AppDelegate.swift */; };
 		22F9961C20083F3E00D034CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9961B20083F3E00D034CD /* ViewController.swift */; };
 		22F9961F20083F3E00D034CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22F9961D20083F3E00D034CD /* Main.storyboard */; };
@@ -15,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2252465C2009A15A004BAB3B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		2252465D2009A15A004BAB3B /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
+		225246672009A90B004BAB3B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		2252466D200BBA9D004BAB3B /* GitRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitRepository.swift; path = ../../../repoview/RepoView/Models/GitRepository.swift; sourceTree = "<group>"; };
 		22F9961620083F3E00D034CD /* RepoView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepoView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F9961920083F3E00D034CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22F9961B20083F3E00D034CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +31,9 @@
 		22F9962020083F3E00D034CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22F9962320083F3E00D034CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22F9962520083F3E00D034CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4797F8E507AE9148B7D4E302 /* Pods_RepoView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RepoView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		627D39BD438EEFFFE7E23305 /* Pods-RepoView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RepoView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RepoView/Pods-RepoView.debug.xcconfig"; sourceTree = "<group>"; };
+		9762E51B54A732ED83CC3D08 /* Pods-RepoView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RepoView.release.xcconfig"; path = "Pods/Target Support Files/Pods-RepoView/Pods-RepoView.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +41,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F3D8C7673FC4D3D1163DA9B /* Pods_RepoView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2252466C200BBA59004BAB3B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2252466D200BBA9D004BAB3B /* GitRepository.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		22F9960D20083F3E00D034CD = {
 			isa = PBXGroup;
 			children = (
 				22F9961820083F3E00D034CD /* RepoView */,
 				22F9961720083F3E00D034CD /* Products */,
+				CA168F80898D838C17F5FDF1 /* Pods */,
+				CD0393CB9B20D3609752E387 /* Frameworks */,
+				2252465C2009A15A004BAB3B /* Podfile */,
+				2252465D2009A15A004BAB3B /* Podfile.lock */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +81,31 @@
 			children = (
 				22F9961920083F3E00D034CD /* AppDelegate.swift */,
 				22F9961B20083F3E00D034CD /* ViewController.swift */,
+				225246672009A90B004BAB3B /* ViewModel.swift */,
+				2252466C200BBA59004BAB3B /* Models */,
 				22F9961D20083F3E00D034CD /* Main.storyboard */,
 				22F9962020083F3E00D034CD /* Assets.xcassets */,
 				22F9962220083F3E00D034CD /* LaunchScreen.storyboard */,
 				22F9962520083F3E00D034CD /* Info.plist */,
 			);
 			path = RepoView;
+			sourceTree = "<group>";
+		};
+		CA168F80898D838C17F5FDF1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				627D39BD438EEFFFE7E23305 /* Pods-RepoView.debug.xcconfig */,
+				9762E51B54A732ED83CC3D08 /* Pods-RepoView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD0393CB9B20D3609752E387 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4797F8E507AE9148B7D4E302 /* Pods_RepoView.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +115,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22F9962820083F3E00D034CD /* Build configuration list for PBXNativeTarget "RepoView" */;
 			buildPhases = (
+				E2D10A1883A2BA3C35832C14 /* [CP] Check Pods Manifest.lock */,
 				22F9961220083F3E00D034CD /* Sources */,
 				22F9961320083F3E00D034CD /* Frameworks */,
 				22F9961420083F3E00D034CD /* Resources */,
+				EFE2CC842E038216F28A4972 /* [CP] Embed Pods Frameworks */,
+				84C879835788F196F3A0A299 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,11 +172,69 @@
 			files = (
 				22F9962420083F3E00D034CD /* LaunchScreen.storyboard in Resources */,
 				22F9962120083F3E00D034CD /* Assets.xcassets in Resources */,
+				2252465F2009A15B004BAB3B /* Podfile.lock in Resources */,
+				2252465E2009A15B004BAB3B /* Podfile in Resources */,
 				22F9961F20083F3E00D034CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84C879835788F196F3A0A299 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RepoView/Pods-RepoView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2D10A1883A2BA3C35832C14 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RepoView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFE2CC842E038216F28A4972 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RepoView/Pods-RepoView-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RepoView/Pods-RepoView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		22F9961220083F3E00D034CD /* Sources */ = {
@@ -137,7 +242,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				22F9961C20083F3E00D034CD /* ViewController.swift in Sources */,
+				2252466E200BBA9D004BAB3B /* GitRepository.swift in Sources */,
 				22F9961A20083F3E00D034CD /* AppDelegate.swift in Sources */,
+				225246682009A90B004BAB3B /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +379,7 @@
 		};
 		22F9962920083F3E00D034CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 627D39BD438EEFFFE7E23305 /* Pods-RepoView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +395,7 @@
 		};
 		22F9962A20083F3E00D034CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9762E51B54A732ED83CC3D08 /* Pods-RepoView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

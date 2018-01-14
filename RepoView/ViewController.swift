@@ -7,17 +7,35 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    
+    let viewModel = ViewModel()
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        searchTextField.rx.text
+            .orEmpty
+            .bind(to: viewModel.userSearchString)
+            .disposed(by: disposeBag)
+        
+        viewModel.data
+            .drive(tableView.rx.items(cellIdentifier: "Cell")) { _, repository, cell in
+                cell.textLabel?.text = repository.name
+                cell.detailTextLabel?.text = repository.description
+            }
+            .disposed(by: disposeBag)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
 
