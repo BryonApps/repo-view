@@ -12,6 +12,8 @@
 		2252465F2009A15B004BAB3B /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 2252465D2009A15A004BAB3B /* Podfile.lock */; };
 		225246682009A90B004BAB3B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225246672009A90B004BAB3B /* ViewModel.swift */; };
 		2252466E200BBA9D004BAB3B /* GitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252466D200BBA9D004BAB3B /* GitRepository.swift */; };
+		22C7281E200C423300E98CF8 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7281D200C423300E98CF8 /* ServiceManager.swift */; };
+		22C72821200D7FF400E98CF8 /* DataRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C72820200D7FF400E98CF8 /* DataRequestOperation.swift */; };
 		22F9961A20083F3E00D034CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9961920083F3E00D034CD /* AppDelegate.swift */; };
 		22F9961C20083F3E00D034CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9961B20083F3E00D034CD /* ViewController.swift */; };
 		22F9961F20083F3E00D034CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22F9961D20083F3E00D034CD /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 		2252465D2009A15A004BAB3B /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
 		225246672009A90B004BAB3B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2252466D200BBA9D004BAB3B /* GitRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitRepository.swift; path = ../../../repoview/RepoView/Models/GitRepository.swift; sourceTree = "<group>"; };
+		22C7281D200C423300E98CF8 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		22C72820200D7FF400E98CF8 /* DataRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequestOperation.swift; sourceTree = "<group>"; };
 		22F9961620083F3E00D034CD /* RepoView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepoView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F9961920083F3E00D034CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22F9961B20083F3E00D034CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +60,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		22C7281F200D7FC000E98CF8 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				22C7281D200C423300E98CF8 /* ServiceManager.swift */,
+				22C72820200D7FF400E98CF8 /* DataRequestOperation.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		22F9960D20083F3E00D034CD = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +96,7 @@
 				22F9961B20083F3E00D034CD /* ViewController.swift */,
 				225246672009A90B004BAB3B /* ViewModel.swift */,
 				2252466C200BBA59004BAB3B /* Models */,
+				22C7281F200D7FC000E98CF8 /* Networking */,
 				22F9961D20083F3E00D034CD /* Main.storyboard */,
 				22F9962020083F3E00D034CD /* Assets.xcassets */,
 				22F9962220083F3E00D034CD /* LaunchScreen.storyboard */,
@@ -244,7 +258,9 @@
 				22F9961C20083F3E00D034CD /* ViewController.swift in Sources */,
 				2252466E200BBA9D004BAB3B /* GitRepository.swift in Sources */,
 				22F9961A20083F3E00D034CD /* AppDelegate.swift in Sources */,
+				22C72821200D7FF400E98CF8 /* DataRequestOperation.swift in Sources */,
 				225246682009A90B004BAB3B /* ViewModel.swift in Sources */,
+				22C7281E200C423300E98CF8 /* ServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,14 +11,14 @@ import RxCocoa
 
 class ViewModel {
     let userSearchString = Variable("")
-    //let displayRepositories: Variable<[GitRepository]> = Variable([])
     
     let disposeBag = DisposeBag()
     
-    lazy var data: Driver<[GitRepository]> = {
+    lazy var aggregatedData: Driver<[GitRepository]> = {
         return self.userSearchString.asObservable()
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
+            // flatMapLatest will update the observable to contain the results from getRepositories...
             .flatMapLatest {
                 self.getRepositories(githubId: $0)
             }
@@ -27,6 +27,7 @@ class ViewModel {
     
     func getRepositories(githubId:String) -> Observable<[GitRepository]> {
         print("id :", githubId)
+        var data = [GitRepository]()
         if (githubId.count > 3) {
             guard let url = URL(string: "https://api.github.com/users/\(githubId)/repos?page=1&per_page=100")
                 else { return Observable.just([]) }
@@ -35,8 +36,6 @@ class ViewModel {
                 .rx.json(url: url)
                 .retry(3)
                 .map {
-                    var data = [GitRepository]()
-
                     if let items = $0 as? [[String: AnyObject]] {
                         items.forEach {
                             guard let name = $0["name"] as? String,
@@ -51,7 +50,6 @@ class ViewModel {
                         }
                     }
                     
-                    data.sort { $0.language < $1.language }
                     return data }
             .catchErrorJustReturn(([]))
         } else {
