@@ -35,6 +35,7 @@ class ServiceManager {
             } else if let data = data,
                 let httpResponse = response as? HTTPURLResponse {
                 if (httpResponse.statusCode == 200) {
+                    self.errorMessage = ""
                     self.updateSearchResults(data)
                     if let linksString = httpResponse.allHeaderFields["Link"] as? String {
                         self.moreResults = self.hasMorePages(linkString:linksString)
@@ -46,12 +47,14 @@ class ServiceManager {
                     } else {
                         self.moreResults = false
                     }
-                    
                 } else if ( httpResponse.statusCode == 403 ) {
                     self.errorMessage = "RATE_LIMIT_EXCEEDED"
                     self.clearCachedRepos()
-                } else {
+                } else if ( httpResponse.statusCode == 404 ) {
                     self.errorMessage = "NO_RESULTS_FOUND"
+                    self.clearCachedRepos()
+                } else {
+                    self.errorMessage = "Other Error"
                     self.clearCachedRepos()
                 }
                 DispatchQueue.main.async {
@@ -107,11 +110,5 @@ class ServiceManager {
             print("error trying to convert data to JSON")
             print(error)
         }
-    }
-    
-    public func performOperation(_ number: Int, success: @escaping (Int) -> Void)->Void {
-        print("Operation #\(number) starts")
-        usleep(useconds_t(1000-(number*50))) // Block thread for some time
-        success(number)
     }
 }

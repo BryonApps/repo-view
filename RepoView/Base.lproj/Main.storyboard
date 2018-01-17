@@ -31,7 +31,7 @@
         <!--GitHub Repo Search-->
         <scene sceneID="oEX-MG-voH">
             <objects>
-                <viewController id="3hH-LL-Rho" customClass="ViewController" customModule="RepoView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3hH-LL-Rho" customClass="SearchViewController" customModule="RepoView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g1k-IP-xm2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,38 +40,57 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by Repo Owner/User" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="neM-7J-Lg2">
-                                        <rect key="frame" x="20" y="18" width="335" height="40"/>
+                                        <rect key="frame" x="20" y="16" width="335" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="H9u-XX-e3F"/>
                                         </constraints>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <action selector="searchTextValueChanged:" destination="3hH-LL-Rho" eventType="valueChanged" id="TwI-82-XuF"/>
+                                            <outlet property="delegate" destination="3hH-LL-Rho" id="eK9-75-AXN"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOQ-ha-dia" userLabel="UnderlineView">
-                                        <rect key="frame" x="20" y="57" width="329" height="1"/>
+                                        <rect key="frame" x="20" y="55" width="329" height="1"/>
                                         <color key="backgroundColor" red="0.0" green="0.25098039220000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="XGl-EK-XKT"/>
                                         </constraints>
                                     </view>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="G16-jc-vQb">
-                                        <rect key="frame" x="177.5" y="78" width="20" height="20"/>
+                                        <rect key="frame" x="287.5" y="78" width="20" height="20"/>
                                         <color key="tintColor" red="0.0" green="0.25098039220000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="color" red="0.0" green="0.25098039220000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNk-xb-Sir">
+                                        <rect key="frame" x="108" y="72" width="159" height="32"/>
+                                        <color key="backgroundColor" red="0.0" green="0.25098039220000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" red="0.98431372549999996" green="0.98431372549999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchButtonTapAction:" destination="3hH-LL-Rho" eventType="touchUpInside" id="BvV-sV-JuL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="G16-jc-vQb" firstAttribute="centerX" secondItem="vPG-1A-riK" secondAttribute="centerX" id="72y-So-aXs"/>
-                                    <constraint firstItem="neM-7J-Lg2" firstAttribute="top" secondItem="vPG-1A-riK" secondAttribute="top" constant="18" id="7YM-LH-GGq"/>
+                                    <constraint firstItem="G16-jc-vQb" firstAttribute="centerX" secondItem="vPG-1A-riK" secondAttribute="centerX" constant="110" id="72y-So-aXs"/>
+                                    <constraint firstItem="neM-7J-Lg2" firstAttribute="top" secondItem="vPG-1A-riK" secondAttribute="top" constant="16" id="7YM-LH-GGq"/>
                                     <constraint firstAttribute="height" constant="120" id="Dc3-OZ-cmQ"/>
+                                    <constraint firstItem="ZNk-xb-Sir" firstAttribute="centerX" secondItem="vPG-1A-riK" secondAttribute="centerX" id="EaY-pc-ss0"/>
+                                    <constraint firstItem="G16-jc-vQb" firstAttribute="leading" secondItem="ZNk-xb-Sir" secondAttribute="trailing" constant="20.5" id="Gls-z3-g42"/>
                                     <constraint firstItem="dOQ-ha-dia" firstAttribute="leading" secondItem="neM-7J-Lg2" secondAttribute="leading" id="HOs-dm-P8z"/>
                                     <constraint firstAttribute="trailing" secondItem="neM-7J-Lg2" secondAttribute="trailing" constant="20" id="L5D-1v-m2b"/>
                                     <constraint firstItem="dOQ-ha-dia" firstAttribute="top" secondItem="neM-7J-Lg2" secondAttribute="bottom" constant="-1" id="PRH-oU-amw"/>
+                                    <constraint firstItem="G16-jc-vQb" firstAttribute="centerY" secondItem="ZNk-xb-Sir" secondAttribute="centerY" id="S39-jk-w5J"/>
                                     <constraint firstItem="dOQ-ha-dia" firstAttribute="trailing" secondItem="neM-7J-Lg2" secondAttribute="trailing" constant="-6" id="Zyh-kn-wPh"/>
-                                    <constraint firstItem="G16-jc-vQb" firstAttribute="top" secondItem="neM-7J-Lg2" secondAttribute="bottom" constant="20" id="aPT-ry-eeh"/>
                                     <constraint firstItem="neM-7J-Lg2" firstAttribute="leading" secondItem="vPG-1A-riK" secondAttribute="leading" constant="20" id="nVw-4M-qXx"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZNk-xb-Sir" secondAttribute="bottom" constant="16" id="oAz-rp-2pA"/>
+                                    <constraint firstItem="ZNk-xb-Sir" firstAttribute="top" secondItem="dOQ-ha-dia" secondAttribute="bottom" constant="16" id="xhN-t6-W9H"/>
                                 </constraints>
                             </view>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akM-jg-Z5c" userLabel="ShadowView">
@@ -110,13 +129,30 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3hH-LL-Rho" id="PEd-pv-AAu"/>
+                                    <outlet property="delegate" destination="3hH-LL-Rho" id="pR3-3C-IrV"/>
+                                </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqJ-Xe-28Q">
+                                <rect key="frame" x="134.5" y="291.5" width="106.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle message text." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUH-mq-aHC">
+                                <rect key="frame" x="111.5" y="318" width="152.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="akM-jg-Z5c" firstAttribute="leading" secondItem="g1k-IP-xm2" secondAttribute="leading" id="1i7-EM-cJ3"/>
                             <constraint firstItem="hyP-kG-AKd" firstAttribute="top" secondItem="akM-jg-Z5c" secondAttribute="bottom" id="CSV-Yy-P1l"/>
                             <constraint firstItem="vPG-1A-riK" firstAttribute="trailing" secondItem="mgg-Ch-JdR" secondAttribute="trailing" id="EnS-YM-u8H"/>
+                            <constraint firstItem="RUH-mq-aHC" firstAttribute="top" secondItem="aqJ-Xe-28Q" secondAttribute="bottom" constant="6" id="Oea-RT-A6F"/>
                             <constraint firstItem="hyP-kG-AKd" firstAttribute="trailing" secondItem="mgg-Ch-JdR" secondAttribute="trailing" id="R3t-wi-t7B"/>
                             <constraint firstItem="hyP-kG-AKd" firstAttribute="bottom" secondItem="mgg-Ch-JdR" secondAttribute="bottom" id="dBr-WU-88d"/>
                             <constraint firstItem="vPG-1A-riK" firstAttribute="leading" secondItem="mgg-Ch-JdR" secondAttribute="leading" id="fLl-Tg-tPU"/>
@@ -124,11 +160,18 @@
                             <constraint firstAttribute="trailing" secondItem="akM-jg-Z5c" secondAttribute="trailing" id="iUN-84-5Gr"/>
                             <constraint firstItem="hyP-kG-AKd" firstAttribute="leading" secondItem="mgg-Ch-JdR" secondAttribute="leading" id="nxX-6s-F2O"/>
                             <constraint firstItem="vPG-1A-riK" firstAttribute="top" secondItem="mgg-Ch-JdR" secondAttribute="top" id="oj8-RN-BGS"/>
+                            <constraint firstItem="aqJ-Xe-28Q" firstAttribute="centerX" secondItem="mgg-Ch-JdR" secondAttribute="centerX" id="oo7-FR-elI"/>
+                            <constraint firstItem="RUH-mq-aHC" firstAttribute="centerX" secondItem="aqJ-Xe-28Q" secondAttribute="centerX" id="uiX-tN-ImO"/>
+                            <constraint firstItem="aqJ-Xe-28Q" firstAttribute="centerY" secondItem="mgg-Ch-JdR" secondAttribute="centerY" id="w5A-Ja-kOx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mgg-Ch-JdR"/>
                     </view>
                     <navigationItem key="navigationItem" title="GitHub Repo Search" id="l7O-dl-ane"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="G16-jc-vQb" id="z90-im-RFB"/>
+                        <outlet property="messageDescriptionLabel" destination="RUH-mq-aHC" id="uUJ-li-yrm"/>
+                        <outlet property="messageTitleLabel" destination="aqJ-Xe-28Q" id="OWR-qR-MFf"/>
+                        <outlet property="searchButton" destination="ZNk-xb-Sir" id="Xse-56-7po"/>
                         <outlet property="searchTextField" destination="neM-7J-Lg2" id="dba-0W-W0Q"/>
                         <outlet property="tableView" destination="hyP-kG-AKd" id="Ol3-a1-61b"/>
                     </connections>
