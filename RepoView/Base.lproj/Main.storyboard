@@ -42,6 +42,7 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by Repo Owner/User" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="neM-7J-Lg2">
                                         <rect key="frame" x="20" y="16" width="335" height="40"/>
+                                        <color key="tintColor" red="0.0" green="0.25098039220000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="H9u-XX-e3F"/>
                                         </constraints>

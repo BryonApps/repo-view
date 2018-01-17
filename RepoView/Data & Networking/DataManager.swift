@@ -57,6 +57,7 @@ class DataManager {
                     self.errorMessage = "Other Error"
                     self.clearCache()
                 }
+                
                 DispatchQueue.main.async {
                     completion(self.repos, self.moreResults, self.lastResultPageNumber, self.errorMessage)
                 }
@@ -111,5 +112,10 @@ class DataManager {
             print("error trying to convert data to JSON")
             print(error)
         }
+    }
+    
+    // Sort the cached results and create a dictionary of repo counts by language
+    func prepareResults () {
+        
     }
 }
