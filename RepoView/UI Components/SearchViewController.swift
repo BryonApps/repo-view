@@ -113,7 +113,6 @@ class SearchViewController: UIViewController {
             messageTitleLabel.text = "No Repos Found"
             messageDescriptionLabel.text = "We didn't find any GitHub repos for that user."
         }
-
         tableView.reloadData()
     }
     
@@ -155,10 +154,15 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell: RepoCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RepoCell
         
-        cell.textLabel?.text = DataManager.sharedManager.repos[indexPath.row].name
-        cell.detailTextLabel?.text = DataManager.sharedManager.repos[indexPath.row].description
+        cell.titleLabel?.text = DataManager.sharedManager.repos[indexPath.row].name
+        cell.descriptionLabel?.text = DataManager.sharedManager.repos[indexPath.row].description ?? ""
+        cell.forkLabel?.text = String(DataManager.sharedManager.repos[indexPath.row].forksCount)
+        cell.starLabel?.text = String(DataManager.sharedManager.repos[indexPath.row].stargazersCount)
+        
+        cell.updatedLabel?.text = String(DataManager.sharedManager.repos[indexPath.row].updatedString.prefix(10))
+        
         return cell
     }
 }
