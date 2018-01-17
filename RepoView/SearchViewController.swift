@@ -28,7 +28,6 @@ class SearchViewController: UIViewController {
     }
     
     // MARK: - UI Actions
-    
     @IBAction func searchButtonTapAction(_ sender: Any) {
         guard let searchString = searchTextField.text
             else { return }
@@ -132,6 +131,13 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         resetDisplay()
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        userSearchString = textField.text ?? ""
+        initiateSearch()
+        textField.resignFirstResponder()
         return true
     }
 }
