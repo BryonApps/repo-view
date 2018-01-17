@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetDisplay()
     }
     
     // MARK: - UI Actions
@@ -37,8 +38,9 @@ class SearchViewController: UIViewController {
     }
     
     func resetDisplay() {
-        ServiceManager.sharedManager.clearCachedRepos()
-        tableView.reloadData()
+        errorMessage = ""
+        DataManager.sharedManager.clearCache()
+        refreshTableView()
     }
     
     func initiateSearch() {
@@ -46,7 +48,7 @@ class SearchViewController: UIViewController {
         
         activityIndicator.startAnimating()
         
-        ServiceManager.sharedManager.getReposForUser(searchUserId: userSearchString, page:1) { results, more, lastPageNumber, errorMessage in
+        DataManager.sharedManager.getReposForUser(searchUserId: userSearchString, page:1) { results, more, lastPageNumber, errorMessage in
             // we have the initial API request results here, or an error message...
             // we need to do the first fetch before we know how many pages are there in total...
             
@@ -62,7 +64,7 @@ class SearchViewController: UIViewController {
                 for pageNumber in 2..<lastPageUpperRange  {
                     let operation = BlockOperation(block: {
                         
-                        ServiceManager.sharedManager.getReposForUser(searchUserId: self.userSearchString, page:pageNumber) { results, more, lastPageNumber, errorMessage in
+                        DataManager.sharedManager.getReposForUser(searchUserId: self.userSearchString, page:pageNumber) { results, more, lastPageNumber, errorMessage in
                             completedCount += 1
                             if (completedCount == lastPageNumber) {
                                 print("Final - GitHub Repos: " , results.count, "Error Msg: ", errorMessage )
@@ -96,8 +98,8 @@ class SearchViewController: UIViewController {
     
     fileprivate func refreshTableView() {
         
-        messageTitleLabel.isHidden = ServiceManager.sharedManager.repos.count > 0
-        messageDescriptionLabel.isHidden = ServiceManager.sharedManager.repos.count > 0
+        messageTitleLabel.isHidden = DataManager.sharedManager.repos.count > 0
+        messageDescriptionLabel.isHidden = DataManager.sharedManager.repos.count > 0
 
         if (errorMessage.count == 0) {
             messageTitleLabel.text = "Search GitHub"
@@ -143,14 +145,14 @@ extension SearchViewController: UITableViewDelegate {
 // MARK: - UITableView DataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ServiceManager.sharedManager.repos.count
+        return DataManager.sharedManager.repos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = ServiceManager.sharedManager.repos[indexPath.row].name
-        cell.detailTextLabel?.text = ServiceManager.sharedManager.repos[indexPath.row].description
+        cell.textLabel?.text = DataManager.sharedManager.repos[indexPath.row].name
+        cell.detailTextLabel?.text = DataManager.sharedManager.repos[indexPath.row].description
         return cell
     }
 }

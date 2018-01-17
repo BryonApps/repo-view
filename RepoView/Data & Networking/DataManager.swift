@@ -1,5 +1,5 @@
 //
-//  ServiceManager.swift
+//  DataManager.swift
 //  RepoView
 //
 //  Created by Bryon Martin on 1/14/18.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class ServiceManager {
-    static let sharedManager = ServiceManager()
+class DataManager {
+    static let sharedManager = DataManager()
     typealias SearchResult = ([GitRepository], Bool, Int, String) -> ()
     
     let defaultSession = URLSession(configuration: .default)
@@ -49,13 +49,13 @@ class ServiceManager {
                     }
                 } else if ( httpResponse.statusCode == 403 ) {
                     self.errorMessage = "RATE_LIMIT_EXCEEDED"
-                    self.clearCachedRepos()
+                    self.clearCache()
                 } else if ( httpResponse.statusCode == 404 ) {
                     self.errorMessage = "NO_RESULTS_FOUND"
-                    self.clearCachedRepos()
+                    self.clearCache()
                 } else {
                     self.errorMessage = "Other Error"
-                    self.clearCachedRepos()
+                    self.clearCache()
                 }
                 DispatchQueue.main.async {
                     completion(self.repos, self.moreResults, self.lastResultPageNumber, self.errorMessage)
@@ -65,7 +65,7 @@ class ServiceManager {
         dataTask?.resume()
     }
     
-    func clearCachedRepos() {
+    func clearCache() {
         repos.removeAll()
         lastResultPageNumber = 1
     }
@@ -74,6 +74,7 @@ class ServiceManager {
         return linkString.contains("next")
     }
     
+    // Parse the response headers to get the URL that includes the last page of repos for the user
     fileprivate func lastPageNumber(linkString: String) -> Int {
         let linksArray = linkString.components(separatedBy:  ",")
         
@@ -99,7 +100,7 @@ class ServiceManager {
         }
         return 1
     }
-
+    // Map the fetched JSON data to GitRepo objects and append them to the cache
     fileprivate func updateSearchResults(_ data: Data) {
         let decoder = JSONDecoder()
         
