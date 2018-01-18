@@ -116,6 +116,12 @@ class DataManager {
     
     // Sort the cached results and create a dictionary of repo counts by language
     func prepareResults () {
-        
+        repos.sort {
+            if ( $0.stargazersCount != $1.stargazersCount ) {
+                return $0.stargazersCount > $1.stargazersCount
+            } else {
+                return $0.name > $1.name
+            }
+        }
     }
 }

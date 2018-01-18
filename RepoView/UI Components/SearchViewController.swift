@@ -61,26 +61,18 @@ class SearchViewController: UIViewController {
                 
                 // if we have to fetch additional pages, send those to be pracessed by the ServiceManager URLSession / dataTask...
                 for pageNumber in 2..<lastPageUpperRange  {
-                    let operation = BlockOperation(block: {
-                        
-                        DataManager.sharedManager.getReposForUser(searchUserId: self.userSearchString, page:pageNumber) { results, more, lastPageNumber, errorMessage in
-                            completedCount += 1
-                            if (completedCount == lastPageNumber) {
-                                print("Final - GitHub Repos: " , results.count, "Error Msg: ", errorMessage )
-                                self.errorMessage = errorMessage
-                                DispatchQueue.main.async { [unowned self] in
-                                    self.refreshTableView()
-                                    self.activityIndicator.stopAnimating()
-                                }
+                   
+                    DataManager.sharedManager.getReposForUser(searchUserId: self.userSearchString, page:pageNumber) { results, more, lastPageNumber, errorMessage in
+                        completedCount += 1
+                        if (completedCount == lastPageNumber || errorMessage.count > 0) {
+                            print("Final - GitHub Repos: " , results.count, "Error Msg: ", errorMessage )
+                            self.errorMessage = errorMessage
+                            DispatchQueue.main.async { [unowned self] in
+                                self.refreshTableView()
+                                self.activityIndicator.stopAnimating()
                             }
                         }
-                    })
-                    operation.name = "Operation #\(pageNumber)"
-                    
-                    if pageNumber > 2 {
-                        operation.addDependency(operationQueue.operations.last!)
                     }
-                    operationQueue.addOperation(operation)
                 }
             } else {
                 self.activityIndicator.stopAnimating()
@@ -101,6 +93,8 @@ class SearchViewController: UIViewController {
         messageDescriptionLabel.isHidden = DataManager.sharedManager.repos.count > 0
 
         if (errorMessage.count == 0) {
+            DataManager.sharedManager.prepareResults()
+            
             messageTitleLabel.text = "Search GitHub"
             messageDescriptionLabel.text = "Type the GitHub user/org and tap Search."
         } else if (errorMessage == "RATE_LIMIT_EXCEEDED") {
